@@ -1,43 +1,36 @@
-package test2;
+package revision;
 
 import java.util.Scanner;
 
-//We are given a 4 digit number using digits 1 to 9. What is the maximum 3 digit number that we can make 
-//by removing one digit from the given integer.
+//We are given a 4 digit number using digits 1 to 9. What is the maximum 3 digit number that we can 
+//make by removing one digit from the given integer.
 
 public class MaximumNumber {
-	private static int findSmallest(int n) {
-		int min=Integer.MAX_VALUE;
-		while(n>0) {
-			int base=n%10;
-			if(base<min) {
-				min=base;
+	public static int max_number(int n){
+		int max=Integer.MIN_VALUE;
+		for(int i=0;i<4;i++) {
+			int count=0;
+			int temp=n;
+			int curr=0, pow=1;
+			while(temp>0) {
+				if(count!=i) {
+					int base=temp%10;
+					curr+=(base*pow);
+					pow*=10;
+				}
+				count++;
+				temp/=10;
 			}
-			n/=10;
-		}
-		return min;
-	}
-	
-	private static int constructSmallest(int n, int s) {
-		int ans=0;
-		int pow=1;
-		while(n>0) {
-			int rem=n%10;
-			if(rem == s) {
-				n/=10;
-				continue;
+			if(curr>max) {
+				max=curr;
 			}
-			ans=ans+(rem*pow);
-			n/=10;
-			pow*=10;
 		}
-		return ans;
-	}
+		return max;
+    }
 	public static void main(String[] args) {
 		Scanner s=new Scanner(System.in);
 		int n=s.nextInt();
-		int smallest=findSmallest(n);
-		System.out.println(constructSmallest(n, smallest));
 		s.close();
+		System.out.println(max_number(n));
 	}
 }

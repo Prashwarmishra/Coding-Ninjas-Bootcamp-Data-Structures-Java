@@ -6,16 +6,16 @@ package linkedListBonusQuestions;
 public class FlattenAMultilevelLinkedListDepthWise {
 	
 	public static LinkedListNode<Integer> flattenList(LinkedListNode<Integer> node) { 
-        if (node == null) {
+        if(node == null) {
         	return node;
-        }        
-        LinkedListNode<Integer> next = node.next;
-        node.next=flattenList(node.down);
-        LinkedListNode<Integer> tail = node;
-        while(tail.next !=null){
-            tail=tail.next;
         }
-        tail.next=flattenList(next);
+        LinkedListNode<Integer> nodeNext = node.next;
+        node.next = flattenList(node.down);
+        LinkedListNode<Integer> temp = node;
+        while(temp.next != null) {
+        	temp = temp.next;
+        }
+        temp.next = flattenList(nodeNext);
         return node;
     } 
 }

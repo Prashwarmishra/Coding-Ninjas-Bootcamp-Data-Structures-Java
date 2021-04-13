@@ -16,20 +16,20 @@ package linkedListBonusQuestions;
 
 public class FlattenAMultiLevelLinkedList {
 	
-//	public static void flattenListCorrect(Node hp) {
-//		if(hp == null || hp.next == null) {
-//			return;
-//		}
-//		Node head = hp;
-//		while(head.next != null) {
-//			head = head.next;
-//		}
-//		if(hp.down != null) {
-//			Node down = hp.down;
-//			hp.down = null;
-//			head.next = down;
-//		}
-//		flattenListCorrect(hp.next);
-//    }
+	public static void flattenListCorrect(Node hp) {
+		if(hp == null || hp.next == null) {
+			return;
+		}
+		Node head = hp;
+		while(head.next != null) {
+			head = head.next;
+		}
+		if(hp.down != null) {
+			Node down = hp.down;
+			hp.down = null;
+			head.next = down;
+		}
+		flattenListCorrect(hp.next);
+    }
 	
 }

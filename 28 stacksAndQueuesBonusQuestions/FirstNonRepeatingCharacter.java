@@ -10,8 +10,30 @@ import java.util.Queue;
 public class FirstNonRepeatingCharacter {
 	
 	public static void nonrep(String str) {
-        Queue<Integer> q = new LinkedList<>();
-        String ans = str.charAt(0)+"";
-        
+		if(str.length() <= 0) {
+			return;
+		}
+		String ans = "";
+		Queue<Character> q = new LinkedList<>();
+		int[] arr = new int[26];
+		
+		for(int i=0; i<str.length(); i++) {
+			char curr = str.charAt(i);
+			arr[curr-97]++;
+			q.add(curr);
+			
+			while(!q.isEmpty()) {
+				if(arr[q.peek()-97] < 2) {
+					ans += q.peek();
+					break;
+				}
+				q.poll();
+			}
+			if(q.isEmpty()) {
+				ans += -1;
+			}
+		}
+		
+		System.out.println(ans);
     }
 }

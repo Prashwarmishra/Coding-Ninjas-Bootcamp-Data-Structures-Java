@@ -21,14 +21,13 @@ public class DiameterOfABinaryTree {
 		doubleVal rightHeight = diameter(root.right);
 		
 		int currHeight = Math.max(leftHeight.height, rightHeight.height)+1;
-		int currDiameter = leftHeight.diameter + rightHeight.diameter + 1;
+		int currDiameter = Math.max(leftHeight.height+rightHeight.height+1, Math.max(leftHeight.diameter, rightHeight.diameter));
 		
 		return new doubleVal(currDiameter, currHeight);
 	}
 	
 	public static int diameterOfBinaryTree(BinaryTreeNode<Integer> root){
-		doubleVal ans = diameter(root);
-		return Math.max(ans.height, ans.diameter);
+		return diameter(root).diameter;
 	}
 	
 }

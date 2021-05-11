@@ -1,7 +1,8 @@
 package binaryTrees2;
 
-import java.util.LinkedList;
-import java.util.Queue;
+//For a given postorder and inorder traversal of a Binary Tree of type integer stored in an array/list, 
+//create the binary tree using the given two arrays/lists. You just need to construct the tree and return the root.
+
 
 public class ConstructTreeUsingInorderAndPostOrder {
 	
@@ -37,34 +38,6 @@ public class ConstructTreeUsingInorderAndPostOrder {
 		root.left = buildTree(lpt, lit);
 		root.right = buildTree(rpt, rit);
 		return root;
-	}
-	
-	public static void printLevelWise(BinaryTreeNode<Integer> root) {
-		Queue<BinaryTreeNode<Integer>> st = new LinkedList<>();
-		st.add(root);
-		while(!st.isEmpty()) {
-			BinaryTreeNode<Integer> curr = st.poll();
-			System.out.print(curr.data+":");
-			if(curr.left != null) {
-				System.out.print("L:" + curr.left.data);
-				st.add(curr.left);
-			}else {
-				System.out.print("L:-1");
-			}
-			if(curr.right != null) {
-				System.out.print(",R:" + curr.right.data);
-				st.add(curr.right);
-			}else {
-				System.out.print(",R:-1");
-			}
-			System.out.println();
-		}
-	}
-	public static void main(String[] args) {
-		int[] preOrder = {4,5,2,6,7,3,1};
-		int[] inOrder = {4,2,5,1,6,3,7};
-		BinaryTreeNode<Integer> root = buildTree(preOrder, inOrder);
-		printLevelWise(root);
 	}
 	
 }

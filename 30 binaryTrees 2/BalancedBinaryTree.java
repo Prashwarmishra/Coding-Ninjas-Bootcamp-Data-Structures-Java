@@ -1,10 +1,10 @@
 package binaryTrees2;
 
-class Pair{
+class numPair{
 	boolean isBalanced;
 	int height;
 	
-	 Pair(boolean isBalanced, int height) {
+	numPair(boolean isBalanced, int height) {
 		this.isBalanced = isBalanced;
 		this.height = height;
 	}
@@ -12,18 +12,18 @@ class Pair{
 
 public class BalancedBinaryTree {
 	
-	public static Pair isBinaryTreeBalanced(BinaryTreeNode<Integer> root) {
+	public static numPair isBinaryTreeBalanced(BinaryTreeNode<Integer> root) {
 		if(root == null) {
-			return new Pair(true, 0);
+			return new numPair(true, 0);
 		}
 		
-		Pair ansLeft = isBinaryTreeBalanced(root.left);
-		Pair ansRight = isBinaryTreeBalanced(root.right);
+		numPair ansLeft = isBinaryTreeBalanced(root.left);
+		numPair ansRight = isBinaryTreeBalanced(root.right);
 		
 		int maxHeight = 1 + Math.max(ansLeft.height, ansRight.height);
 		
 		if(!ansLeft.isBalanced || !ansRight.isBalanced) {
-			return new Pair(false, maxHeight);
+			return new numPair(false, maxHeight);
 		}
 		
 		boolean currBalanced = true;
@@ -32,6 +32,6 @@ public class BalancedBinaryTree {
 			currBalanced = false;
 		}
 		
-		return new Pair(currBalanced, maxHeight);
+		return new numPair(currBalanced, maxHeight);
 	}
 }

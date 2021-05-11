@@ -1,7 +1,7 @@
 package binaryTrees2;
 
-import java.util.LinkedList;
-import java.util.Queue;
+//For a given preorder and inorder traversal of a Binary Tree of type integer stored in an array/list, create the 
+//binary tree using the given two arrays/lists. You just need to construct the tree and return the root.
 
 public class TreeUsingInorderAndPreorder {
 	

@@ -16,31 +16,31 @@ class TreeNode {
 }
 
 public class SubTreeOfAnotherTree {
-	
+
 	public static boolean check(TreeNode T, TreeNode S) {
-		
+
 		if(T == null && S == null) {
 			return true;
 		}
-		
+
 		if(T == null || S == null) {
 			return false;
 		}
-		
+
 		if(!check(T.left, S.left)) {
 			return false;
 		}
-		
+
 		if(!check(T.right, S.right)) {
 			return false;
 		}
 		if(T.val != S.val) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	public static boolean isSubtree(TreeNode T, TreeNode S) {
 		if(S == null) {
 			return true;
@@ -48,12 +48,17 @@ public class SubTreeOfAnotherTree {
 		if(T == null) {
 			return false;
 		}
-		
+
 		if(T.val == S.val) {
-			return check(T, S);
+			boolean ans = check(T, S);
+			return ans;
 		}
-		isSubtree(T.left, S);
-		isSubtree(T.right, S);
+		if(isSubtree(T.left, S)){
+			return true;
+		}
+		if(isSubtree(T.right, S)){
+			return true;
+		}
 		return false;
 	}
 }

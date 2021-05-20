@@ -6,7 +6,6 @@ public class CheckBSTBest {
 			return true;
 		}
 		if(root.data <= min || root.data > max) {
-			System.out.println(root.data);
 			return false;
 		}
 		

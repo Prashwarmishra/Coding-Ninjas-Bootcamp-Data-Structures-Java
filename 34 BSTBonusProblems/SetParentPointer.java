@@ -18,30 +18,19 @@ class Node {
 
 public class SetParentPointer {
 	
-	public static Node constructBST(Node root, int data) {
-		if(data == -1){
-            return root;
-        }
-		if(root == null) {
-			return new Node(data, null, null);
+	public static Node constructBST(int[] arr, int i, Node parent) {
+		if(i >= arr.length || arr[i] == -1) {
+			return null;
 		}
-		if(data < root.data) {
-			Node ansLeft = constructBST(root.left, data);
-			root.left = ansLeft;
-			ansLeft.parent = root;
-		}else{
-			Node ansRight = constructBST(root.right, data);
-			root.right = ansRight;
-			ansRight.parent = root;
-		}
+		Node root = new Node(arr[i], null, null);
+		root.parent = parent;
+		root.left = constructBST(arr, (2*i+1), root);
+		root.right = constructBST(arr, (2*i+2), root);
+		
 		return root;
 	}
 	public static Node solve(int[] arr){
-		Node root = null;
-		
-		for(int i=0; i<arr.length; i++) {
-			root = constructBST(root, arr[i]);
-		}
+		Node root = constructBST(arr, 0, null);
 		return root;
 	}
 }

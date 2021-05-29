@@ -6,16 +6,20 @@ package bstBonusProblems;
 public class KthSmallestNode {
 	
 	static int count = 0;
-	public static int kthSmallest(BinaryTreeNode<Integer> root,int k){
+	public static int kthSmallest(BinaryTreeNode<Integer> root, int k){
 		if(root == null) {
 			return Integer.MIN_VALUE;
 		}
-		kthSmallest(root.left, k);
+		int ansLeft = kthSmallest(root.left, k);
+		if(ansLeft != Integer.MIN_VALUE) {
+			return ansLeft;
+		}
 		if (++count == k) {
 			return (root.data);
 		}
 		return kthSmallest(root.right, k);
 	}
+	
 	public static int kthSmallestNode(BinaryTreeNode<Integer> root,int k){
 		return kthSmallest(root, k);
 	}
